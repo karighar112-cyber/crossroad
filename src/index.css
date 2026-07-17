@@ -2647,6 +2647,8 @@ ul {
   /* Scale down header height on mobile */
   .header {
     height: 70px !important;
+    border-bottom: none !important; /* Remove horizontal line under logo */
+    box-shadow: none !important;
   }
   .header-container img {
     height: 38px !important;
@@ -2657,15 +2659,18 @@ ul {
     height: 75vh !important;
     min-height: 480px !important;
   }
+  .slide {
+    align-items: flex-start !important; /* Top-align content instead of vertical center */
+  }
   .slide-title {
-    font-size: 2.15rem !important;
+    font-size: 2.05rem !important;
     line-height: 1.25 !important;
   }
   .slide-desc {
     font-size: 0.95rem !important;
   }
   .slide-content {
-    padding: 130px 1.25rem 0 !important;
+    padding: 110px 1.25rem 0 !important; /* Space perfectly below mobile header */
   }
 }
 
