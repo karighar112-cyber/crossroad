@@ -45,13 +45,6 @@ export const WhoWeAre: React.FC = () => {
 
   const advisors: AdvisorItem[] = [
     {
-      name: "Nafisa Nasruddin",
-      affiliation: "Climate Security & Gender Specialist",
-      spec: "MS in International Relations & Commonwealth Scholar (UoB) specializing in forced migration, climate security, and gender inclusion.",
-      image: "/crossroad/nafisa.jpeg",
-      bio: "Nafisa Nasruddin is a Balochistan based researcher and program specialist with over six years of experience at the intersection of forced migration, climate security, gender, and community development. She holds an MS in International Relations and is currently pursuing an MSc in International Development Studies (Conflict, Security and Development) at the University of Birmingham as a Commonwealth Scholar, with further academic training from the Refugee Studies Centre at the University of Oxford, where she graduated with distinction. She has served as Program and Research Associate and PSEA focal person at the International Center for Refugee and Migration Studies, and as an external Senior Researcher with the University of Illinois Urbana-Champaign on studies of displaced Afghans, urban violence, and police-community trust in Quetta. Her award-winning research on the climate-induced vulnerabilities of displaced Afghans in Balochistan earned ICRMS's Emerging Scholars Research Award in 2022, and she has presented her work at forums convened by UNDP and UN Women. A member of the Climate Security Expert Network, she has supervised quantitative and qualitative field research in Quetta with UN-Habitat and NED University, and has worked extensively with the Balochistan Rural Support Programme building leadership, advocacy, and capacity among rural women - experience that anchors her work at CrossRoad on gender, displacement, climate vulnerability, and safe community engagement."
-    },
-    {
       name: "Danielle F. Sharaf",
       affiliation: "New Technologies and Climate Expert",
       spec: "Award-winning serial entrepreneur, former member of the Economic Advisory Committee for the PM of Pakistan, UN SDG WE Empower Awardee, and founder/CEO of SWITCH-ITC.",
@@ -72,7 +65,7 @@ export const WhoWeAre: React.FC = () => {
     {
       name: "Ali Saigol",
       affiliation: "Venture Capital & Private Equity Expert",
-      spec: "Demonstrated history of investment leadership, business planning, and agribusiness. Babson College Entrepreneurship graduate.",
+      spec: "Demonstrated history of investment leadership, business planning, and agribusiness. Babson College Partnership graduate.",
       image: "/crossroad/Ali-Saigol-1.jpg"
     },
     {
@@ -80,6 +73,13 @@ export const WhoWeAre: React.FC = () => {
       affiliation: "Strategic Partnerships Expert",
       spec: "Over 20 years of experience building cross-sector coalitions at the WHO Foundation and Gavi, the Vaccine Alliance, scaling health solutions in 10+ countries.",
       image: "/crossroad/Muzzumil-Siddiqui.png"
+    },
+    {
+      name: "Nafisa Nasruddin",
+      affiliation: "Climate Security & Gender Specialist",
+      spec: "MS in International Relations & Commonwealth Scholar (UoB) specializing in forced migration, climate security, and gender inclusion.",
+      image: "/crossroad/nafisa.jpeg",
+      bio: "Nafisa Nasruddin is a Balochistan based researcher and program specialist with over six years of experience at the intersection of forced migration, climate security, gender, and community development. She holds an MS in International Relations and is currently pursuing an MSc in International Development Studies (Conflict, Security and Development) at the University of Birmingham as a Commonwealth Scholar, with further academic training from the Refugee Studies Centre at the University of Oxford, where she graduated with distinction. She has served as Program and Research Associate and PSEA focal person at the International Center for Refugee and Migration Studies, and as an external Senior Researcher with the University of Illinois Urbana-Champaign on studies of displaced Afghans, urban violence, and police-community trust in Quetta. Her award-winning research on the climate-induced vulnerabilities of displaced Afghans in Balochistan earned ICRMS's Emerging Scholars Research Award in 2022, and she has presented her work at forums convened by UNDP and UN Women. A member of the Climate Security Expert Network, she has supervised quantitative and qualitative field research in Quetta with UN-Habitat and NED University, and has worked extensively with the Balochistan Rural Support Programme building leadership, advocacy, and capacity among rural women - experience that anchors her work at CrossRoad on gender, displacement, climate vulnerability, and safe community engagement."
     }
   ];
 
@@ -216,6 +216,7 @@ export const WhoWeAre: React.FC = () => {
                   height: '120px', 
                   borderRadius: '50%', 
                   objectFit: 'cover', 
+                  objectPosition: adv.name === 'Nafisa Nasruddin' ? 'center 15%' : 'center center',
                   marginBottom: '1.25rem',
                   border: '2.5px solid var(--color-accent-teal)',
                   boxShadow: '0 6px 15px rgba(0,0,0,0.06)'
@@ -261,7 +262,14 @@ export const WhoWeAre: React.FC = () => {
             <button className="team-modal-close" onClick={() => setSelectedMember(null)} aria-label="Close modal">✕</button>
             <div className="team-modal-body">
               <div className="team-modal-img-container">
-                <img src={selectedMember.image} alt={selectedMember.name} className="team-modal-img" />
+                <img 
+                  src={selectedMember.image} 
+                  alt={selectedMember.name} 
+                  className="team-modal-img" 
+                  style={{
+                    objectPosition: selectedMember.name === 'Nafisa Nasruddin' ? 'center 15%' : 'center center'
+                  }}
+                />
               </div>
               <div className="team-modal-info">
                 <span className="team-modal-tagline">{selectedMember.role ? "Team Profile" : "Advisory Board"}</span>

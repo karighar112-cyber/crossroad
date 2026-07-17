@@ -302,7 +302,7 @@ ul {
 
 /* Responsive Glassmorphism Cards */
 .glass-card {
-  background: var(--glass-bg);
+  background: #FFFFFF !important;
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow);
   border-radius: var(--border-radius-md);
@@ -797,14 +797,16 @@ ul {
   padding: 2rem;
   text-align: center;
   border-radius: var(--border-radius-md);
-  border: 1px solid var(--glass-border);
-  background: rgba(22, 34, 63, 0.2);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: #FFFFFF !important;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.02);
   transition: var(--transition-normal);
 }
 
 .advisor-card:hover {
   border-color: var(--color-accent-green);
   transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06) !important;
 }
 
 .advisor-icon {
