@@ -10,8 +10,16 @@ interface TeamMember {
   bio: string;
 }
 
+interface AdvisorItem {
+  name: string;
+  affiliation: string;
+  spec: string;
+  image: string;
+  bio?: string;
+}
+
 export const WhoWeAre: React.FC = () => {
-  const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
+  const [selectedMember, setSelectedMember] = useState<any | null>(null);
   const [activeCharterItem, setActiveCharterItem] = useState<number | null>(0);
 
   const team: TeamMember[] = [
@@ -32,19 +40,17 @@ export const WhoWeAre: React.FC = () => {
       phone: "+92-332-345-3376",
       image: "/crossroad/Ms-Fatima-Majeed-06.jpg",
       bio: "Dr. Ghazna Khalid brings over 20 years of experience in health systems strengthening, maternal and child health, and health policy reform. She has served as Country Liaison for the Global Financing Facility (GFF) Pakistan, Senior Health Specialist with UNDP, Special Advisor to UNHCR for KP and Balochistan, and consultant to the World Bank's IDA-18 program. She has led national RMNCAHN-G initiatives, served as Lead Gynecologist/Advisor for MSF, and Lead M&E Expert for USAID PAIMAN and Falah programs."
-    },
-    {
-      name: "Nafisa Nasruddin",
-      role: "Senior Program & Research Specialist",
-      credentials: "MS International Relations | Commonwealth Scholar (University of Birmingham) | Oxford Refugee Studies Centre (Distinction)",
-      email: "nafisa.nasruddin@gmail.com",
-      phone: "+92-300-1234567",
-      image: "/crossroad/Nafisa-Shah-1.jpg",
-      bio: "Nafisa Nasruddin is a Balochistan based researcher and program specialist with over six years of experience at the intersection of forced migration, climate security, gender, and community development. She holds an MS in International Relations and is currently pursuing an MSc in International Development Studies (Conflict, Security and Development) at the University of Birmingham as a Commonwealth Scholar, with further academic training from the Refugee Studies Centre at the University of Oxford, where she graduated with distinction. She has served as Program and Research Associate and PSEA focal person at the International Center for Refugee and Migration Studies, and as an external Senior Researcher with the University of Illinois Urbana-Champaign on studies of displaced Afghans, urban violence, and police-community trust in Quetta. Her award-winning research on the climate-induced vulnerabilities of displaced Afghans in Balochistan earned ICRMS's Emerging Scholars Research Award in 2022, and she has presented her work at forums convened by UNDP and UN Women. A member of the Climate Security Expert Network, she has supervised quantitative and qualitative field research in Quetta with UN-Habitat and NED University, and has worked extensively with the Balochistan Rural Support Programme building leadership, advocacy, and capacity among rural women - experience that anchors her work at CrossRoad on gender, displacement, climate vulnerability, and safe community engagement."
     }
   ];
 
-  const advisors = [
+  const advisors: AdvisorItem[] = [
+    {
+      name: "Nafisa Nasruddin",
+      affiliation: "Climate Security & Gender Specialist",
+      spec: "MS in International Relations & Commonwealth Scholar (UoB) specializing in forced migration, climate security, and gender inclusion.",
+      image: "/crossroad/nafisa.jpeg",
+      bio: "Nafisa Nasruddin is a Balochistan based researcher and program specialist with over six years of experience at the intersection of forced migration, climate security, gender, and community development. She holds an MS in International Relations and is currently pursuing an MSc in International Development Studies (Conflict, Security and Development) at the University of Birmingham as a Commonwealth Scholar, with further academic training from the Refugee Studies Centre at the University of Oxford, where she graduated with distinction. She has served as Program and Research Associate and PSEA focal person at the International Center for Refugee and Migration Studies, and as an external Senior Researcher with the University of Illinois Urbana-Champaign on studies of displaced Afghans, urban violence, and police-community trust in Quetta. Her award-winning research on the climate-induced vulnerabilities of displaced Afghans in Balochistan earned ICRMS's Emerging Scholars Research Award in 2022, and she has presented her work at forums convened by UNDP and UN Women. A member of the Climate Security Expert Network, she has supervised quantitative and qualitative field research in Quetta with UN-Habitat and NED University, and has worked extensively with the Balochistan Rural Support Programme building leadership, advocacy, and capacity among rural women - experience that anchors her work at CrossRoad on gender, displacement, climate vulnerability, and safe community engagement."
+    },
     {
       name: "Danielle F. Sharaf",
       affiliation: "New Technologies and Climate Expert",
@@ -57,7 +63,6 @@ export const WhoWeAre: React.FC = () => {
       spec: "Tenured U.S. Diplomat (on sabbatical), cultural attaché, climate finance policy expert, and MA (Cantab) in Law from the University of Cambridge.",
       image: "/crossroad/Leah-Boyer-Saifullah.jpg"
     },
-
     {
       name: "Ms. Fatima Majeed",
       affiliation: "Indigenous & Environmental Rights Defender",
@@ -101,8 +106,6 @@ export const WhoWeAre: React.FC = () => {
     }
   ];
 
-
-
   const toggleCharter = (index: number) => {
     setActiveCharterItem(activeCharterItem === index ? null : index);
   };
@@ -113,7 +116,6 @@ export const WhoWeAre: React.FC = () => {
       <section className="section section-alt" style={{ 
         backgroundImage: 'linear-gradient(rgba(11, 19, 37, 0.45), rgba(3, 7, 18, 0.55)), url(/crossroad/who-we-are-banner.jpg)',
         backgroundSize: 'cover',
-        
         padding: '13rem 0',
         backgroundPosition: 'center center', 
         textAlign: 'center',
@@ -195,23 +197,28 @@ export const WhoWeAre: React.FC = () => {
         <div className="section-header">
           <span className="section-tagline">Board of Advisors</span>
           <h2 className="section-title">Advisory Board</h2>
-          <p className="section-desc">Guiding our digital innovation, international policy, grassroots activism, and financial partnerships.</p>
+          <p className="section-desc">Guiding our digital innovation, international policy, grassroots activism, and financial partnerships. Click on any advisor to view their profile.</p>
         </div>
 
         <div className="advisor-grid">
           {advisors.map((adv, idx) => (
-            <div key={idx} className="advisor-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+            <div 
+              key={idx} 
+              className="advisor-card" 
+              style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', cursor: 'pointer' }}
+              onClick={() => setSelectedMember(adv)}
+            >
               <img 
                 src={adv.image} 
                 alt={adv.name} 
                 style={{ 
-                  width: '100px', 
-                  height: '100px', 
+                  width: '120px', 
+                  height: '120px', 
                   borderRadius: '50%', 
                   objectFit: 'cover', 
                   marginBottom: '1.25rem',
-                  border: '2px solid var(--color-accent-teal)',
-                  boxShadow: '0 4px 10px rgba(0,0,0,0.05)'
+                  border: '2.5px solid var(--color-accent-teal)',
+                  boxShadow: '0 6px 15px rgba(0,0,0,0.06)'
                 }} 
               />
               <h4>{adv.name}</h4>
@@ -246,6 +253,7 @@ export const WhoWeAre: React.FC = () => {
           </div>
         </div>
       </section>
+
       {/* Team Member Profile Modal */}
       {selectedMember && (
         <div className="team-modal-overlay" onClick={() => setSelectedMember(null)}>
@@ -256,19 +264,21 @@ export const WhoWeAre: React.FC = () => {
                 <img src={selectedMember.image} alt={selectedMember.name} className="team-modal-img" />
               </div>
               <div className="team-modal-info">
-                <span className="team-modal-tagline">Team Profile</span>
+                <span className="team-modal-tagline">{selectedMember.role ? "Team Profile" : "Advisory Board"}</span>
                 <h2>{selectedMember.name}</h2>
-                <div className="team-modal-role">{selectedMember.role}</div>
-                <div className="team-modal-credentials">{selectedMember.credentials}</div>
+                <div className="team-modal-role">{selectedMember.role || selectedMember.affiliation}</div>
+                <div className="team-modal-credentials">{selectedMember.credentials || selectedMember.spec}</div>
                 
-                <div className="team-modal-contacts">
-                  <div><strong>✉ Email:</strong> <a href={`mailto:${selectedMember.email}`}>{selectedMember.email}</a></div>
-                  <div><strong>📞 Phone:</strong> {selectedMember.phone}</div>
-                </div>
+                {selectedMember.email && (
+                  <div className="team-modal-contacts">
+                    <div><strong>✉ Email:</strong> <a href={`mailto:${selectedMember.email}`}>{selectedMember.email}</a></div>
+                    {selectedMember.phone && <div><strong>📞 Phone:</strong> {selectedMember.phone}</div>}
+                  </div>
+                )}
                 
                 <div className="team-modal-divider"></div>
                 
-                <p className="team-modal-bio">{selectedMember.bio}</p>
+                <p className="team-modal-bio">{selectedMember.bio || selectedMember.spec}</p>
               </div>
             </div>
           </div>
