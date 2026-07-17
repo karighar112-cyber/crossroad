@@ -64,7 +64,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentPage }) => {
       desc: "We work at the intersection of climate resilience and gender justice to build local capacity, deploy clean technologies, and guide national policy.",
       btnText: "Our Services",
       page: "what_we_do",
-      video: "/home page video/cross-road-home.mp4"
+      video: "/home-page-video/cross-road-home.mp4"
     },
     {
       tagline: "Empowering Communities & Families",
@@ -87,7 +87,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentPage }) => {
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % slides.length);
-    }, 6000);
+    }, 8000);
     return () => clearInterval(timer);
   }, [slides.length]);
 
