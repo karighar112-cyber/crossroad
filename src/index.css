@@ -2544,3 +2544,125 @@ ul {
   border-color: var(--color-accent-green);
   box-shadow: 0 10px 25px rgba(86, 192, 42, 0.05);
 }
+
+
+/* ==========================================
+   MOBILE RESPONSIVE NAVIGATION & MARGIN FIXES
+   ========================================== */
+
+/* Default navigation modes */
+.desktop-nav {
+  display: flex !important;
+}
+
+.mobile-menu-btn {
+  display: none !important;
+}
+
+.mobile-nav-panel {
+  display: none !important;
+}
+
+/* Responsive screen overrides */
+@media (max-width: 768px) {
+  /* Hide desktop menu items */
+  .desktop-nav {
+    display: none !important;
+  }
+  
+  /* Show hamburger button */
+  .mobile-menu-btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    background: none !important;
+    border: none !important;
+    cursor: pointer !important;
+    font-size: 2rem !important;
+    padding: 0.5rem !important;
+    z-index: 100 !important;
+    transition: var(--transition-fast) !important;
+  }
+  
+  /* Slide-down mobile panel container */
+  .mobile-nav-panel {
+    display: block !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    width: 100% !important;
+    overflow: hidden !important;
+    max-height: 0;
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    z-index: 99 !important;
+    box-shadow: 0 15px 30px rgba(15, 23, 42, 0.1) !important;
+  }
+  
+  .mobile-nav-panel.is-open {
+    max-height: 450px !important;
+  }
+  
+  /* Light Theme Panel Style */
+  .mobile-nav-panel.is-light {
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(16px) !important;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08) !important;
+  }
+  
+  /* Dark Theme Panel Style */
+  .mobile-nav-panel.is-dark {
+    background: rgba(11, 19, 37, 0.98) !important;
+    backdrop-filter: blur(16px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+  
+  .mobile-nav-links {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 2rem 1.5rem !important;
+    gap: 1.25rem !important;
+  }
+  
+  .mobile-nav-link {
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    transition: var(--transition-fast) !important;
+  }
+  
+  .mobile-nav-panel.is-light .mobile-nav-link {
+    color: var(--color-text-light) !important;
+  }
+  
+  .mobile-nav-panel.is-dark .mobile-nav-link {
+    color: rgba(255, 255, 255, 0.95) !important;
+  }
+  
+  .mobile-nav-link:hover, .mobile-nav-link.active {
+    color: var(--color-accent-green) !important;
+  }
+  
+  /* Scale down header height on mobile */
+  .header {
+    height: 70px !important;
+  }
+  .header-container img {
+    height: 38px !important;
+  }
+  
+  /* Mobile slider adjustments */
+  .slider-container {
+    height: 75vh !important;
+    min-height: 480px !important;
+  }
+  .slide-title {
+    font-size: 2.15rem !important;
+    line-height: 1.25 !important;
+  }
+  .slide-desc {
+    font-size: 0.95rem !important;
+  }
+  .slide-content {
+    padding: 60px 1.25rem 0 !important;
+  }
+}

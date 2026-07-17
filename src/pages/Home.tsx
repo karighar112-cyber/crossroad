@@ -307,7 +307,7 @@ export const Home: React.FC<HomeProps> = ({ setCurrentPage }) => {
   return (
     <div className="home-page">
       {/* 1. Hero Section (Keep but Improve) */}
-      <section className="hero-slider" style={{ marginTop: '0' }}>
+      <section className="slider-container" style={{ marginTop: '0' }}>
         {slides.map((slide, index) => (
           <div 
             key={index} 

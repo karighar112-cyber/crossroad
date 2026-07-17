@@ -11,6 +11,7 @@ type PageKey = 'home' | 'what_we_do' | 'who_we_are' | 'sdgs' | 'resource_center'
 function App() {
   const [currentPage, setCurrentPage] = useState<PageKey>('home');
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const isHeaderTransparent = currentPage === 'home' && !isScrolled;
 
@@ -72,7 +73,7 @@ function App() {
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="nav" style={{ display: 'flex' }}>
+          <nav className="nav desktop-nav">
             <a 
               href="#home" 
               className={`nav-link ${currentPage === 'home' ? 'active' : ''}`}
@@ -111,6 +112,66 @@ function App() {
             <button 
               className="btn btn-primary btn-sm"
               onClick={() => handlePageChange('join_the_movement')}
+            >
+              Join us
+            </button>
+          </nav>
+
+          {/* Hamburger button for mobile */}
+          <button 
+            className="mobile-menu-btn" 
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            style={{
+              color: isHeaderTransparent ? '#FFFFFF' : 'var(--color-text-light)'
+            }}
+            aria-label="Toggle Menu"
+          >
+            {isMobileMenuOpen ? '✕' : '☰'}
+          </button>
+        </div>
+
+        {/* Mobile Navigation Panel */}
+        <div className={`mobile-nav-panel ${isMobileMenuOpen ? 'is-open' : ''} ${isHeaderTransparent ? 'is-dark' : 'is-light'}`}>
+          <nav className="mobile-nav-links">
+            <a 
+              href="#home" 
+              className={`mobile-nav-link ${currentPage === 'home' ? 'active' : ''}`}
+              onClick={() => { handlePageChange('home'); setIsMobileMenuOpen(false); }}
+            >
+              Home
+            </a>
+            <a 
+              href="#what-we-do" 
+              className={`mobile-nav-link ${currentPage === 'what_we_do' ? 'active' : ''}`}
+              onClick={() => { handlePageChange('what_we_do'); setIsMobileMenuOpen(false); }}
+            >
+              What We Do
+            </a>
+            <a 
+              href="#who-we-are" 
+              className={`mobile-nav-link ${currentPage === 'who_we_are' ? 'active' : ''}`}
+              onClick={() => { handlePageChange('who_we_are'); setIsMobileMenuOpen(false); }}
+            >
+              Who We Are
+            </a>
+            <a 
+              href="#sdgs" 
+              className={`mobile-nav-link ${currentPage === 'sdgs' ? 'active' : ''}`}
+              onClick={() => { handlePageChange('sdgs'); setIsMobileMenuOpen(false); }}
+            >
+              SDGs
+            </a>
+            <a 
+              href="#resources" 
+              className={`mobile-nav-link ${currentPage === 'resource_center' ? 'active' : ''}`}
+              onClick={() => { handlePageChange('resource_center'); setIsMobileMenuOpen(false); }}
+            >
+              Resource Center
+            </a>
+            <button 
+              className="btn btn-primary btn-sm mobile-nav-btn"
+              onClick={() => { handlePageChange('join_the_movement'); setIsMobileMenuOpen(false); }}
+              style={{ width: '100%', marginTop: '1rem' }}
             >
               Join us
             </button>
